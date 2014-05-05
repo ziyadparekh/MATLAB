@@ -1,0 +1,22 @@
+M = flipud(spyus);
+%plot(M(1:end -1 ,1));
+P = M(1:end-1,1);
+returns = price2ret(P);
+disp(returns);
+%plot(returns(1:end,1));
+%hist(returns,100);
+%[h, stats] = cdfplot(returns);
+meanVal = stats.mean;
+stdVal = stats.std;
+mean = sprintf('Mean is %d and standard deviation is %d \n', meanVal, stdVal);
+disp(mean);
+H =sprintf('Chi Squared test result is %d', chi2gof(returns));
+disp(H);
+
+% spyMean = mean(returns);
+% spyStd = std(returns);
+params = alpha_loglik(returns);
+disp(sprintf('The optimizing value of alpha is: %d', params.alph));
+disp(sprintf('The optimizing value of beta is: %d', params.bet));
+disp(sprintf('The optimizing value of gamma is: %d', params.gamm));
+disp(sprintf('The optimizing value of delta is: %d', params.delt));
